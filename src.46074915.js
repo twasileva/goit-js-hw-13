@@ -59,7 +59,7 @@ var e=require("process"),t=require("./utils"),r=require("./helpers/normalizeHead
 },{"./utils":"S1cf","./helpers/bind":"EDTP","./core/Axios":"OvAf","./core/mergeConfig":"OHvn","./defaults":"BXyq","./cancel/Cancel":"mIKj","./cancel/CancelToken":"tsWd","./cancel/isCancel":"V30M","./helpers/spread":"X8jb","./helpers/isAxiosError":"wICU"}],"dZBD":[function(require,module,exports) {
 module.exports=require("./lib/axios");
 },{"./lib/axios":"nUiQ"}],"hC31":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;class e{constructor(){this.searchQuery="",this.page=1}fetchPictures(){console.log(this);const e=`https://pixabay.com/api/?key=22754587-14ea7ef4a3e62d80c98f18cd3&q=${this.searchQuery}&per_page=5&page=${this.page}&image_type=photo&orientation=horizontal&safesearch=true`;return fetch(e).then(e=>e.json()).then(e=>(this.page+=1,e.hits))}resetPage(){this.page=1}set query(e){this.searchQuery=e}}exports.default=e;
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;class e{constructor(){this.searchQuery="",this.page=1}fetchPictures(){console.log(this);const e=`https://pixabay.com/api/?key=22754587-14ea7ef4a3e62d80c98f18cd3&q=${this.searchQuery}&per_page=40&page=${this.page}&image_type=photo&orientation=horizontal&safesearch=true`;return fetch(e).then(e=>e.json()).then(e=>(this.page+=1,e.hits))}resetPage(){this.page=1}set query(e){this.searchQuery=e}}exports.default=e;
 },{}],"pAws":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -69,4 +69,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"handlebars/dist/handlebars.runtime":"pAws"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=n(require("axios")),r=n(require("./js/api-service")),t=n(require("./hbs/renderCard.hbs"));function n(e){return e&&e.__esModule?e:{default:e}}const s={searchForm:document.getElementById("search-form"),renderGallery:document.querySelector(".gallery"),loadMoreBtn:document.querySelector(".load-more")};s.searchForm.addEventListener("submit",a),s.loadMoreBtn.addEventListener("click",c);const u=new r.default;function a(e){e.preventDefault(),u.query=e.currentTarget.elements.searchQuery.value,u.resetPage(),u.fetchPictures().then(o)}function c(){u.fetchPictures().then(o)}function o(e){s.renderGallery.insertAdjacentHTML("beforeend",(0,t.default)(e))}
 },{"./sass/main.scss":"clu1","axios":"dZBD","./js/api-service":"hC31","./hbs/renderCard.hbs":"DWkY"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-13/src.b5cf60fe.js.map
+//# sourceMappingURL=/goit-js-hw-13/src.46074915.js.map
