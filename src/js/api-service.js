@@ -7,7 +7,7 @@ export default class PicturesApiService {
   fetchPictures() {
     console.log(this);
 
-    const BASE_URL = `https://pixabay.com/api/?key=22754587-14ea7ef4a3e62d80c98f18cd3&q=${this.searchQuery}&per_page=5&page=${this.page}&image_type=photo&orientation=horizontal&safesearch=true`
+    const BASE_URL = `https://pixabay.com/api/?key=22754587-14ea7ef4a3e62d80c98f18cd3&q=${this.searchQuery}&per_page=40&page=${this.page}&image_type=photo&orientation=horizontal&safesearch=true`
 
 
     return fetch(BASE_URL).then(r => r.json()).then(data => {
