@@ -22,10 +22,11 @@ function onSearch(e) {
   e.preventDefault()
 
   clearPicturesMarkup()
-  if (picturesApiService.query === '') {
+
+  picturesApiService.query = e.currentTarget.elements.searchQuery.value
+  if (picturesApiService.query.trim === '') {
     return
   }
-  picturesApiService.query = e.currentTarget.elements.searchQuery.value
   picturesApiService.resetPage()
 
 
