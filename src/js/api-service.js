@@ -1,19 +1,19 @@
+import axios from "axios"
+
 export default class PicturesApiService {
   constructor() {
     this.searchQuery = ''
     this.page = 1
   }
 
-  fetchPictures() {
-    console.log(this);
+  async fetchPictures() {
 
     const BASE_URL = `https://pixabay.com/api/?key=22754587-14ea7ef4a3e62d80c98f18cd3&q=${this.searchQuery}&per_page=40&page=${this.page}&image_type=photo&orientation=horizontal&safesearch=true`
 
+    const response = await axios.get(BASE_URL)
+    this.page += 1
+    return response.data
 
-    return fetch(BASE_URL).then(r => r.json()).then(data => {
-      this.page += 1
-      return data.hits
-    })
   }
 
   resetPage() {

@@ -1,0 +1,41 @@
+/* Оформление кнопки */
+:root {
+  --logo-text-color: rgb(33, 150, 243);
+  --white-text-color: rgb(255, 255, 255);
+  --white-text-color-op: rgba(255, 255, 255, 0.6);
+  --transition-duration: 250ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.is-hidden {
+  display: none;
+}
+
+button.pos {
+  margin: 0 auto;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 4px;
+  width: 200px;
+  height: 40px;
+
+  background-color: var(--logo-text-color);
+  color: var(--white-text-color);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+
+  transition: color var(--transition-duration) var(--transition-timing-function);
+
+  &:hover,
+  &:focus {
+    color: var(--white-text-color-op);
+  }
+}
