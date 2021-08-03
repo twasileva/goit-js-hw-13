@@ -24,7 +24,7 @@ function onSearch(e) {
   clearPicturesMarkup()
 
   picturesApiService.query = e.currentTarget.elements.searchQuery.value
-  if (picturesApiService.query.trim === '') {
+  if (picturesApiService.query === '') {
     return
   }
   picturesApiService.resetPage()
