@@ -26,7 +26,7 @@ async function onSearch(e) {
   try {
     const result = await picturesApiService.fetchPictures();
 
-    if (picturesApiService.query === ' ' || result.hits.length === 0) {
+    if (picturesApiService.query === '' || result.hits.length === 0) {
       clearPicturesMarkup();
       refs.loadMoreBtn.classList.add('is-hidden');
       Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
@@ -43,13 +43,20 @@ async function onSearch(e) {
 }
 
 async function onLoad() {
-  picturesApiService.fetchPictures().then(data => {
-    picturesMarkup(data.hits)
-  })
 
   try {
     const result = await picturesApiService.fetchPictures();
     picturesMarkup(result.hits);
+
+    const { height: cardHeight } = document
+      .querySelector('.gallery')
+      .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: 'smooth',
+    });
+
 
     const lenghtHits = refs.renderGallery.querySelectorAll('.photo-card').length
 
