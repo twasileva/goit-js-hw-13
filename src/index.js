@@ -22,7 +22,7 @@ async function onSearch(e) {
   clearPicturesMarkup()
   picturesApiService.resetPage()
   picturesApiService.query = e.currentTarget.elements.searchQuery.value
-
+  window.scrollBy(0, 0);
   try {
     const result = await picturesApiService.fetchPictures();
 
@@ -34,8 +34,6 @@ async function onSearch(e) {
       refs.loadMoreBtn.classList.remove('is-hidden');
       Notiflix.Notify.success(`"Hooray! We found ${result.totalHits} images."`);
       onLoad(result.hits);
-
-
     }
   } catch (error) {
     console.log(error);
@@ -48,22 +46,23 @@ async function onLoad() {
     const result = await picturesApiService.fetchPictures();
     picturesMarkup(result.hits);
 
-    const { height: cardHeight } = document
-      .querySelector('.gallery')
-      .firstElementChild.getBoundingClientRect();
-
-    window.scrollBy({
-      top: cardHeight * 2,
-      behavior: 'smooth',
-    });
-
-
     const lenghtHits = refs.renderGallery.querySelectorAll('.photo-card').length
 
     if (lenghtHits >= result.totalHits) {
       Notiflix.Notify.failure('"We are sorry, but you have reached the end of search results."');
       refs.loadMoreBtn.classList.add('is-hidden');
     }
+
+    const { height: cardHeight } = refs.renderGallery
+      .firstElementChild.getBoundingClientRect();
+
+
+    refs.renderGallery.scrollBy({
+      top: cardHeight * 2,
+      behavior: 'smooth',
+    });
+
+
 
   }
   catch (error) {
