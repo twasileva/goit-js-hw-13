@@ -33,7 +33,7 @@ async function onSearch(e) {
     } else {
       refs.loadMoreBtn.classList.remove('is-hidden');
       Notiflix.Notify.success(`"Hooray! We found ${result.totalHits} images."`);
-      onLoad(result.hits);
+      picturesMarkup(result.hits);
     }
   } catch (error) {
     console.log(error);
